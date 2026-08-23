@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cargo Data Manager</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body class="dashboard-page">
+    <header class="topbar">
+        <div>
+            <h1>Cargo Data Manager</h1>
+            <p>Welcome, {{ username }}</p>
+        </div>
+        <a class="logout-button" href="/records">View Records</a>
+        <a class="logout-button" href="/logout">Logout</a>
+    </header>
+
+    <main class="dashboard-content">
+        <div class="page-heading">
+            <div>
+                <h2>New Cargo Entry</h2>
+                <p>Fill the details and save the record.</p>
+            </div>
+        </div>
+
+        {% if saved %}
+        <p class="success-message">Record saved successfully.</p>
+        {% endif %}
+
+        <form method="POST" class="record-form">
+            <section class="form-section">
+                <h3>Basic Details</h3>
+                <div class="form-grid">
+                    <div>
+                        <label>WT Slip Date</label>
+                        <input type="date" name="wt_slip_date">
+                    </div>
+
+                    <div>
+                        <label>Online / Manual Handover Status</label>
+                        <select name="handover_status">
+                            <option value="">Select status</option>
+                            <option value="Online">Online</option>
+                            <option value="Manual">Manual</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label>Bill No.</label>
+                        <input type="text" name="bill_no">
+                    </div>
+
+                    <div>
+                        <label>Lot No.</label>
+                        <input type="text" name="lot_no">
+                    </div>
+
+                    <div>
+                        <label>Loading Port</label>
+                        <input type="text" name="loading_port">
+                    </div>
+
+                    <div>
+                        <label>Balance Bags</label>
+                        <input type="number" name="balance_bags">
+                    </div>
+
+                    <div>
+                        <label>Vehicle No.</label>
+                        <input type="text" name="vehicle_no">
+                    </div>
+
+                    <div>
+                        <label>Received Bags</label>
+                        <input type="number" name="received_bags">
+                    </div>
+
+                    <div>
+                        <label>Carting Date</label>
+                        <input type="date" name="carting_date">
+                    </div>
+                </div>
+            </section>
+
+            <section class="form-section">
+                <h3>Shipment Details</h3>
+                <div class="form-grid">
+                    <div>
+                        <label>Shipper</label>
+                        <input type="text" name="shipper">
+                    </div>
+
+                    <div>
+                        <label>Invoice No.</label>
+                        <input type="text" name="invoice_no">
+                    </div>
+
+                    <div>
+                        <label>Shipping Bill No.</label>
+                        <input type="text" name="shipping_bill_no">
+                    </div>
+
+                    <div>
+                        <label>Shipping Bill Date</label>
+                        <input type="date" name="shipping_bill_date">
+                    </div>
+
+                    <div>
+                        <label>HS Code</label>
+                        <input type="text" name="hs_code">
+                    </div>
+
+                    <div>
+                        <label>Bags</label>
+                        <input type="number" name="bags">
+                    </div>
+
+                    <div>
+                        <label>Weight</label>
+                        <input type="text" name="weight">
+                    </div>
+
+                    <div>
+                        <label>No. of Containers</label>
+                        <input type="number" name="container_count">
+                    </div>
+
+                    <div>
+                        <label>Container Size</label>
+                        <input type="text" name="container_size">
+                    </div>
+                </div>
+            </section>
+
+            <section class="form-section">
+                <h3>Party & Booking Details</h3>
+                <div class="form-grid">
+                    <div>
+                        <label>Visual</label>
+                        <input type="text" name="visual">
+                    </div>
+
+                    <div>
+                        <label>Description</label>
+                        <input type="text" name="description">
+                    </div>
+
+                    <div>
+                        <label>Destination</label>
+                        <input type="text" name="destination">
+                    </div>
+
+                    <div>
+                        <label>Consignee</label>
+                        <input type="text" name="consignee">
+                    </div>
+
+                    <div>
+                        <label>Booking No.</label>
+                        <input type="text" name="booking_no">
+                    </div>
+
+                    <div>
+                        <label>Booking Party</label>
+                        <input type="text" name="booking_party">
+                    </div>
+
+                    <div>
+                        <label>Vessel</label>
+                        <input type="text" name="vessel">
+                    </div>
+
+                    <div>
+                        <label>ETD</label>
+                        <input type="date" name="etd">
+                    </div>
+
+                    <div>
+                        <label>Cutoff</label>
+                        <input type="date" name="cutoff">
+                    </div>
+
+                    <div>
+                        <label>Shipping Line</label>
+                        <input type="text" name="shipping_line">
+                    </div>
+                </div>
+            </section>
+
+            <section class="form-section">
+                <h3>Container & Gate Details</h3>
+                <div class="form-grid">
+                    <div>
+                        <label>Container No.</label>
+                        <input type="text" name="container_no">
+                    </div>
+
+                    <div>
+                        <label>Gate</label>
+                        <input type="text" name="gate">
+                    </div>
+
+                    <div>
+                        <label>Pickup Date</label>
+                        <input type="date" name="pickup_date">
+                    </div>
+
+                    <div>
+                        <label>Gate In</label>
+                        <input type="text" name="gatein">
+                    </div>
+
+                    <div>
+                        <label>EGM No. / Date</label>
+                        <input type="text" name="egm_no_date">
+                    </div>
+
+                    <div>
+                        <label>Scroll No. / Date</label>
+                        <input type="text" name="scroll_no_date">
+                    </div>
+
+                    <div>
+                        <label>Current Queue</label>
+                        <input type="text" name="current_queue">
+                    </div>
+                </div>
+            </section>
+
+            <button class="save-button" type="submit">Save Record</button>
+        </form>
+    </main>
+</body>
+
+</html>

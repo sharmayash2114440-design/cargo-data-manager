@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+cargo_data.db
+build/
+dist/
+*.spec

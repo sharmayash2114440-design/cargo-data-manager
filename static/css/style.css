@@ -1,0 +1,265 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: #f2f5f9;
+    color: #1f2937;
+}
+
+/* Login page */
+
+body:not(.dashboard-page) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #093257, #1684bb);
+}
+
+.login-box {
+    width: min(92%, 390px);
+    padding: 36px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.25);
+}
+
+.login-box h1 {
+    margin: 0;
+    text-align: center;
+    color: #123b60;
+    font-size: 27px;
+}
+
+.login-box h2 {
+    margin: 10px 0 28px;
+    color: #667085;
+    text-align: center;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+/* Forms */
+
+label {
+    display: block;
+    margin-bottom: 7px;
+    color: #344054;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 11px 12px;
+    border: 1px solid #d0d5dd;
+    border-radius: 7px;
+    background: white;
+    color: #1f2937;
+    font-size: 14px;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #1684bb;
+    box-shadow: 0 0 0 3px rgba(22, 132, 187, 0.12);
+}
+
+button {
+    border: none;
+    border-radius: 7px;
+    padding: 12px 18px;
+    background: #0d6ea8;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #075985;
+}
+
+/* Dashboard */
+
+.dashboard-page {
+    display: block;
+}
+
+.topbar {
+    min-height: 85px;
+    padding: 16px max(5%, 30px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    background: #0d3a60;
+    color: white;
+}
+
+.topbar h1 {
+    margin: 0;
+    font-size: 23px;
+}
+
+.topbar p {
+    margin: 5px 0 0;
+    color: #cbddec;
+    font-size: 14px;
+}
+
+.logout-button {
+    display: inline-block;
+    margin-left: 8px;
+    padding: 10px 14px;
+    border: 1px solid #a8c9df;
+    border-radius: 7px;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.logout-button:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.dashboard-content {
+    width: min(1400px, 94%);
+    margin: 30px auto;
+}
+
+.page-heading {
+    margin-bottom: 20px;
+}
+
+.page-heading h2 {
+    margin: 0;
+    color: #123b60;
+    font-size: 25px;
+}
+
+.page-heading p {
+    margin: 7px 0 0;
+    color: #667085;
+}
+
+.record-form {
+    padding: 24px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 3px 15px rgba(16, 24, 40, 0.08);
+}
+
+.form-section {
+    margin-bottom: 28px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #e4e7ec;
+}
+
+.form-section:last-of-type {
+    border-bottom: none;
+}
+
+.form-section h3 {
+    margin: 0 0 18px;
+    color: #0d6ea8;
+    font-size: 17px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.save-button {
+    min-width: 180px;
+    background: #1684bb;
+}
+
+.success-message {
+    margin-bottom: 20px;
+    padding: 13px 15px;
+    border: 1px solid #9be0b4;
+    border-radius: 8px;
+    background: #ecfdf3;
+    color: #087443;
+    font-weight: bold;
+}
+
+/* Records page */
+
+.search-form {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.search-form input {
+    max-width: 420px;
+}
+
+.search-form a {
+    color: #0d6ea8;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+    border-radius: 12px;
+    background: white;
+    box-shadow: 0 3px 15px rgba(16, 24, 40, 0.08);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    white-space: nowrap;
+}
+
+th,
+td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #eaecf0;
+    text-align: left;
+    font-size: 14px;
+}
+
+th {
+    background: #edf5fa;
+    color: #123b60;
+}
+
+tr:hover td {
+    background: #fafcff;
+}
+
+@media (max-width: 850px) {
+    .form-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+
+    .topbar,
+    .search-form {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .record-form {
+        padding: 18px;
+    }
+}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Records - Cargo Data Manager</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body class="dashboard-page">
+    <header class="topbar">
+        <div>
+            <h1>Cargo Data Manager</h1>
+            <p>Saved Records</p>
+        </div>
+
+        <div>
+            <a class="logout-button" href="/dashboard">New Entry</a>
+            <a class="logout-button" href="/logout">Logout</a>
+        </div>
+    </header>
+
+    <main class="dashboard-content">
+        <div class="page-heading">
+            <h2>All Cargo Records</h2>
+            <p>Search, edit or delete saved records.</p>
+        </div>
+        <a class="logout-button" href="/records/export" style="background: #198754;">
+            Export to Excel
+        </a>
+        <form method="GET" class="search-form">
+            <input type="text" name="query" value="{{ query }}" placeholder="Search a record...">
+            <button type="submit">Search</button>
+            <a href="/records">Clear</a>
+        </form>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Booking No.</th>
+                        <th>Bill No.</th>
+                        <th>Invoice No.</th>
+                        <th>Shipper</th>
+                        <th>Container No.</th>
+                        <th>Destination</th>
+                        <th>Created</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for record in records %}
+                    <tr>
+                        <td>{{ record.id }}</td>
+                        <td>{{ record.booking_no }}</td>
+                        <td>{{ record.bill_no }}</td>
+                        <td>{{ record.invoice_no }}</td>
+                        <td>{{ record.shipper }}</td>
+                        <td>{{ record.container_no }}</td>
+                        <td>{{ record.destination }}</td>
+                        <td>{{ record.created_at }}</td>
+                        <td>
+                            <a href="/records/{{ record.id }}/edit"
+                                style="color: #0d6ea8; font-weight: bold; margin-right: 10px;">
+                                Edit
+                            </a>
+
+                            <form method="POST" action="/records/{{ record.id }}/delete" style="display: inline;">
+                                <button type="submit" onclick="return confirm('Delete this record?')"
+                                    style="background: #c93636;">
+                                    Delete
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="9">No records found.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>
+
+</html>

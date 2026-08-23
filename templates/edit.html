@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Record - Cargo Data Manager</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="dashboard-page">
+
+{% macro input_field(label, name, input_type="text") %}
+<div>
+    <label>{{ label }}</label>
+    <input type="{{ input_type }}" name="{{ name }}" value="{{ record[name] or '' }}">
+</div>
+{% endmacro %}
+
+<header class="topbar">
+    <div>
+        <h1>Cargo Data Manager</h1>
+        <p>Edit Cargo Record #{{ record.id }}</p>
+    </div>
+    <a class="logout-button" href="/records">Back to Records</a>
+</header>
+
+<main class="dashboard-content">
+    <div class="page-heading">
+        <h2>Edit Cargo Entry</h2>
+        <p>Update details and click Update Record.</p>
+    </div>
+
+    <form method="POST" class="record-form">
+        <section class="form-section">
+            <h3>Basic Details</h3>
+            <div class="form-grid">
+                {{ input_field("WT Slip Date", "wt_slip_date", "date") }}
+
+                <div>
+                    <label>Online / Manual Handover Status</label>
+                    <select name="handover_status">
+                        <option value="">Select status</option>
+                        <option value="Online" {% if record["handover_status"] == "Online" %}selected{% endif %}>Online</option>
+                        <option value="Manual" {% if record["handover_status"] == "Manual" %}selected{% endif %}>Manual</option>
+                    </select>
+                </div>
+
+                {{ input_field("Bill No.", "bill_no") }}
+                {{ input_field("Lot No.", "lot_no") }}
+                {{ input_field("Loading Port", "loading_port") }}
+                {{ input_field("Balance Bags", "balance_bags", "number") }}
+                {{ input_field("Vehicle No.", "vehicle_no") }}
+                {{ input_field("Received Bags", "received_bags", "number") }}
+                {{ input_field("Carting Date", "carting_date", "date") }}
+            </div>
+        </section>
+
+        <section class="form-section">
+            <h3>Shipment Details</h3>
+            <div class="form-grid">
+                {{ input_field("Shipper", "shipper") }}
+                {{ input_field("Invoice No.", "invoice_no") }}
+                {{ input_field("Shipping Bill No.", "shipping_bill_no") }}
+                {{ input_field("Shipping Bill Date", "shipping_bill_date", "date") }}
+                {{ input_field("HS Code", "hs_code") }}
+                {{ input_field("Bags", "bags", "number") }}
+                {{ input_field("Weight", "weight") }}
+                {{ input_field("No. of Containers", "container_count", "number") }}
+                {{ input_field("Container Size", "container_size") }}
+            </div>
+        </section>
+
+        <section class="form-section">
+            <h3>Party & Booking Details</h3>
+            <div class="form-grid">
+                {{ input_field("Visual", "visual") }}
+                {{ input_field("Description", "description") }}
+                {{ input_field("Destination", "destination") }}
+                {{ input_field("Consignee", "consignee") }}
+                {{ input_field("Booking No.", "booking_no") }}
+                {{ input_field("Booking Party", "booking_party") }}
+                {{ input_field("Vessel", "vessel") }}
+                {{ input_field("ETD", "etd", "date") }}
+                {{ input_field("Cutoff", "cutoff", "date") }}
+                {{ input_field("Shipping Line", "shipping_line") }}
+            </div>
+        </section>
+
+        <section class="form-section">
+            <h3>Container & Gate Details</h3>
+            <div class="form-grid">
+                {{ input_field("Container No.", "container_no") }}
+                {{ input_field("Gate", "gate") }}
+                {{ input_field("Pickup Date", "pickup_date", "date") }}
+                {{ input_field("Gate In", "gatein") }}
+                {{ input_field("EGM No. / Date", "egm_no_date") }}
+                {{ input_field("Scroll No. / Date", "scroll_no_date") }}
+                {{ input_field("Current Queue", "current_queue") }}
+            </div>
+        </section>
+
+        <button class="save-button" type="submit">Update Record</button>
+    </form>
+</main>
+</body>
+</html>
